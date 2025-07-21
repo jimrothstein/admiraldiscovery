@@ -18,6 +18,7 @@ csv_file  <- "https://raw.githubusercontent.com/pharmaverse/admiraldiscovery/ref
 
 
 target  <- readr::read_csv(csv_file)
+names(target)
 ## ------------------------  source
 
 json_file <- "https://raw.githubusercontent.com/pharmaverse/pharmaverseadam/refs/heads/main/inst/extdata/adams-specs.json"
@@ -32,4 +33,11 @@ new2 = new |> dplyr::select(dataset, variable, variable_label)
 
 # ------------------------  update
 
-res = dplyr::rows_update(x=target, y=new2, by = c("dataset", "variable"), unmatched = "ignore")
+res2 = dplyr::rows_update(x=target, y=new2, by = c("dataset", "variable"), unmatched = "ignore")
+
+# result
+diffdf::diffdf(target, res2)
+
+
+# save
+readr::write_csv(res2, "inst/admiral-lookup-book-NEW.csv")
