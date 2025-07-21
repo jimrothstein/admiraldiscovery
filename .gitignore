@@ -52,3 +52,6 @@ rsconnect/
 docs
 inst/doc
 .DS_Store
+
+# allow updated lookup-book
+!inst/admiral-lookup-book*.csv

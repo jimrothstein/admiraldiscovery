@@ -41,3 +41,19 @@ diffdf::diffdf(target, res2)
 
 # save
 readr::write_csv(res2, "inst/admiral-lookup-book-NEW.csv")
+
+
+## ------------------------  check row order
+target |> head()
+res2 |> head()
+
+target |> tail()
+
+unique(target$dataset)
+sort(target$dataset)
+table(target$dataset)
+
+
+unique(res2$dataset)
+sort(res2$dataset)
+table(res2$dataset)
