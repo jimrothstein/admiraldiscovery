@@ -57,3 +57,15 @@ table(target$dataset)
 unique(res2$dataset)
 sort(res2$dataset)
 table(res2$dataset)
+
+sink("inst/lookup.diff")
+# original ds is target
+# updated ds = res2
+dim(target)   # 424 x 9
+dim(res2)     # 424 x 9
+
+diffdf::diffdf(target, res2)
+
+sink()
+readLines("inst/lookup.diff")
+
